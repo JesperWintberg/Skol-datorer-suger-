@@ -6,24 +6,25 @@ namespace ____
     {
         static void Main(string[] args)
         {
-            //Skapar 4 Arrays för dom 4 olika delarna i en kortlek
-            int[] hearts = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-            int[] clubs = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-            int[] diamonds = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-            int[] spades = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            //Skapar 2 Arrays,
+            int[] value = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            string[] suits = { "Hjärter", "Ruter", "Klöver", "Spader" };
 
             //skapar random variabel 
-            Random kort = new Random();
-            Random kort2 = new Random();
-            Random Kort3 = new Random();
+            Random Player = new Random();
+            Random PC = new Random();
 
-            //skapar en ny int variabel som är ramdom av delarna i kortleken
-            int rndmheart = hearts[kort.Next(0, 11)];
-            int rndmclubs = clubs[kort.Next(0, 11)];
-            int rndmdimonds = diamonds[kort.Next(0, 11)];
-            int rndmspades = spades[kort.Next(0, 11)];
+            //Skapar 4 random variabler, 2 till spelaren 2 till PC med olika random.
+            int rndmvalue = value[Player.Next(0, 11)];
+            string rndmsuit = suits[Player.Next(0,4)];
+            //skapar 2 till random variabler som bara behövs i början
+            int rndmvalue2=value[Player.Next(0,11)]; 
+            string rndmsuit2 = suits[Player.Next(0,4)]; 
 
-            
+            int rndmvaluepc = value[PC.Next(0,11)];
+            string rndmsuitpc = suits[PC.Next(0,4)];
+            //skapar 2 till random variabler som bara behövs i början
+            int rndmvaluepc2 = value[PC.Next(0,11)]; 
 
             //Start av spel 
             Console.WriteLine("Hej och välkommen till detta Black jack spel");
@@ -55,7 +56,12 @@ namespace ____
 
             for(int k = 0; k <1; k++)
             {
-                
+                Console.WriteLine("Nu kommer du få två kort");
+                Console.WriteLine($"Du fick en {rndmsuit} {rndmvalue} och en {rndmsuit2} {rndmvalue2}");
+                Console.WriteLine($"Du har nu {rndmvalue + rndmvalue2} poäng");
+                Console.WriteLine($"Datorn har {rndmvaluepc + rndmvaluepc2} poäng");
+                Console.WriteLine("Vill du dra ett nytt kort (y/n)");
+
             }
         }
     }
