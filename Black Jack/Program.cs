@@ -14,16 +14,16 @@ namespace ____
             Random Player = new Random();
             Random PC = new Random();
 
-            //Skapar 4 random variabler, 2 till spelaren 2 till PC med olika random.
+            
             int rndmvalue = value[Player.Next(0, 11)];
             string rndmsuit = suits[Player.Next(0,4)];
-            //skapar 2 till random variabler som bara behövs i början
+           
             int rndmvalue2=value[Player.Next(0,11)]; 
             string rndmsuit2 = suits[Player.Next(0,4)]; 
 
             int rndmvaluepc = value[PC.Next(0,11)];
             string rndmsuitpc = suits[PC.Next(0,4)];
-            //skapar 2 till random variabler som bara behövs i början
+            
             int rndmvaluepc2 = value[PC.Next(0,11)]; 
 
             //Start av spel 
@@ -61,7 +61,32 @@ namespace ____
                 Console.WriteLine($"Du har nu {rndmvalue + rndmvalue2} poäng");
                 Console.WriteLine($"Datorn har {rndmvaluepc + rndmvaluepc2} poäng");
                 Console.WriteLine("Vill du dra ett nytt kort (y/n)");
+                string val1 = Console.ReadLine();               
 
+                int g = rndmvalue + rndmvalue2;
+                int l = rndmvaluepc + rndmvaluepc2;
+
+                //skapr ny random variabel för "runda 2"
+                int rdmvalue3 = value[Player.Next(0, 11)];
+                string rndmsuit3= suits[PC.Next(0, 4)];
+
+                if (val1 == "y")
+                {
+                    Console.WriteLine($"Du drog ett {rndmsuit3} {rdmvalue3}");
+                    Console.WriteLine($"Du har ny {g + rdmvalue3} poäng");
+                    Console.WriteLine($"Datorn har {l} poäng");
+                }
+
+                else if (val1 == "n")
+                {
+                    Console.WriteLine($"Du har fotfarande {g} poäng");
+                    Console.WriteLine($"Datorn drog en {rndmsuit3} {rdmvalue3}");
+                    Console.WriteLine($"Datorn fick {l + rdmvalue3} poäng");
+                }
+                else
+                {
+                    Console.WriteLine("error");
+                }
             }
         }
     }
