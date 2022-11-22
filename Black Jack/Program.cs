@@ -64,6 +64,7 @@ namespace ____
 
                     if(val2 == "y")
                     {
+                        //Runda 3 väg 1
                         Console.WriteLine();
                     }
                 }
