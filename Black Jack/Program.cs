@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 
 namespace ____
 {
@@ -26,36 +27,10 @@ namespace ____
             
             int rndmvaluepc2 = value[PC.Next(0,11)]; 
 
-            //Start av spel 
-            Console.WriteLine("Hej och välkommen till detta Black jack spel");
-            Console.WriteLine("Om du vill börja spelet skriv in ett Y om du vill avsluta programet skriv ett N.");
-            string start =Console.ReadLine();
-            start.ToLower();
-
-
-            //Start frågor innnan spelet börjar          
-            for (int i = 0; i <1; i++)
-            {
-                if (start == "y")
-                {
-                    Console.WriteLine("Startar");
-                }
-
-                else if(start == "n")
-                {
-                    Console.WriteLine("stänger av program");
-                    break;
-                }
-
-                else
-                {
-                    Console.WriteLine("Error");
-                    break;
-                }
-            }
 
             for(int k = 0; k <1; k++)
             {
+                //Runda 1
                 Console.WriteLine("Nu kommer du få två kort");
                 Console.WriteLine($"Du fick en {rndmsuit} {rndmvalue} och en {rndmsuit2} {rndmvalue2}");
                 Console.WriteLine($"Du har nu {rndmvalue + rndmvalue2} poäng");
@@ -72,20 +47,55 @@ namespace ____
 
                 if (val1 == "y")
                 {
+                    //Runda 2 "Väg 1" 
                     Console.WriteLine($"Du drog ett {rndmsuit3} {rdmvalue3}");
                     Console.WriteLine($"Du har ny {g + rdmvalue3} poäng");
                     Console.WriteLine($"Datorn har {l} poäng");
+                    Console.WriteLine("Vill du dra ett nytt kort (y/n)");
+                    string val2 = Console.ReadLine();   
+
+                    int u = g + rdmvalue3;
+                    
+                    
+                    if (g > 21)
+                    {
+                        Console.WriteLine("Datorn har vunnit");
+                    }
+
+                    if(val2 == "y")
+                    {
+                        Console.WriteLine();
+                    }
                 }
 
                 else if (val1 == "n")
                 {
+                    //Runda 2 "Väg 2,Slut"
                     Console.WriteLine($"Du har fotfarande {g} poäng");
                     Console.WriteLine($"Datorn drog en {rndmsuit3} {rdmvalue3}");
                     Console.WriteLine($"Datorn fick {l + rdmvalue3} poäng");
-                }
-                else
-                {
-                    Console.WriteLine("error");
+
+                    int e = l + rdmvalue3;
+
+                    if (e > 21)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Du har vunnit");
+                        break;
+                    }
+                    if (e > g)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Datorn vann du förlorade");
+                        break;
+                    }
+                    else if (e < g)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Du har Vunnit");
+                        break;
+                    }
+
                 }
             }
         }
