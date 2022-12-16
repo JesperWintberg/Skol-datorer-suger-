@@ -62,9 +62,11 @@ namespace ____
                             for (int i = 0; i < vin.Count; i++)
                             {
                                 Console.WriteLine();
-                                Console.WriteLine(vin[i]);
+                                Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine(vin[i]);
+                                Console.WriteLine();
                             }
-                            Console.Write("Vil du starta spelet (y/n): "); string val5 = Console.ReadLine();
+                            Console.ForegroundColor = ConsoleColor.Blue; Console.Write("Vil du starta spelet (y/n): "); string val5 = Console.ReadLine();
+                            Console.Clear();
                             if (val5 == "y")
                             {
                                 spel = true;
@@ -91,7 +93,7 @@ namespace ____
                 {
                     Console.WriteLine();
                     Console.WriteLine("Error: 501");
-
+                    Environment.Exit(1);
                 }
 
                 try
@@ -114,6 +116,7 @@ namespace ____
                     Console.WriteLine();
                     Console.WriteLine("Error 502");
                 }
+
 
                 try
                 {
@@ -148,7 +151,10 @@ namespace ____
                 {
                     Console.WriteLine();
                     Console.WriteLine("Error 503");
+                    Environment.Exit(1);
                 }
+
+
                 //Gör så att om man får två ess (11) så blir ett av essen värt 1 
                 //Denna if funkar bara på första draget ej alla
                 int round1 = rndmvalue + rndmvalue2;
@@ -163,13 +169,14 @@ namespace ____
                 Console.WriteLine($"Du kommer nu att ha {rndmvalue + rndmvalue2} poäng");
                 Console.Write("Vill du ta ett nytt kort (y/n): "); string val = Console.ReadLine();
                 val.ToLower();
+                Console.WriteLine();
 
                 if (val == "y")
                 {
                     sant = true;
                 }
 
-                if (val == "n")
+                else if (val == "n")
                 {
                     sant = false;
                 }
@@ -181,6 +188,8 @@ namespace ____
                 {
                     vinnare = true;
                 }
+
+
                 try
                 {
                     //Spelarens While loop
@@ -207,20 +216,25 @@ namespace ____
                         }
 
 
-                        if (endplayer > 21)
+                        else if (endplayer > 21)
                         {
                             vinnare = false;
+                            sant = false;
+                            break;
                         }
 
-                        if (endplayer == 21)
+                        else if (endplayer == 21)
                         {
                             vinnare = true;
+                            sant = false;
+                            break;
                         }
 
                         Console.WriteLine($"Du fick ett {rndmsuits5} {rndmvalue5}");
                         Console.WriteLine($"Du har nu {endplayer} poäng");
                         Console.Write("Vill du dra ett nytt kort? (y/n): "); string val2 = Console.ReadLine();
                         val2.ToLower();
+                        Console.WriteLine();
 
                         if (val2 == "n")
                         {
@@ -233,6 +247,7 @@ namespace ____
                 {
                     Console.WriteLine();
                     Console.WriteLine("504");
+                    Environment.Exit(1);
                 }
                 int rndmvalue3 = number[random.Next(0, 11)];
                 int rndmvalue4 = number[random.Next(0, 11)];
@@ -250,9 +265,9 @@ namespace ____
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Grattis du har Vunnit!");
                     Console.ForegroundColor = ConsoleColor.White; Console.Write("Skriv in ditt namn: "); vin.Add(Console.ReadLine());
-                    Console.ForegroundColor = ConsoleColor.White; Console.Write("Vill du köra igen (y/n): "); string val3 = Console.ReadLine(); 
+                    Console.ForegroundColor = ConsoleColor.White; Console.Write("Vill du köra igen (y/n): "); string val3 = Console.ReadLine();
 
-                    if(val3 == "y")
+                    if (val3 == "y")
                     {
                         spel = true;
                         avslutning = false;
@@ -261,7 +276,7 @@ namespace ____
                     if (val3 == "n")
                     {
                         spel = false;
-                        avslutning=true;
+                        avslutning = true;
                     }
                     Console.Clear();
                 }
@@ -306,21 +321,25 @@ namespace ____
                             if (PCend > 21)
                             {
                                 vinnare = true;
+                                break;
                             }
 
                             if (PCend == 21)
                             {
                                 vinnare = false;
+                                break;
                             }
 
                             else if (endplayer > PCend)
                             {
                                 vinnare = true;
+                                break;
                             }
 
                             else if (PCend > endplayer)
                             {
                                 vinnare = false;
+                                break;
                             }
 
 
@@ -332,8 +351,10 @@ namespace ____
                 {
                     Console.WriteLine();
                     Console.WriteLine("Error 505");
+                    Environment.Exit(1);
                 }
             }
         }
     }
 }
+
